@@ -22,6 +22,18 @@ end
 
 gem 'jquery-rails'
 
+group :development do
+  gem 'guard'
+end
+
+group :test do
+  gem 'ruby-prof'
+end
+
+group :tools do
+  gem 'guard-test'
+end
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

@@ -15,6 +15,8 @@ class ProductsControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_not_nil assigns(:products)
+
+    assert_select '.list_image', 3
   end
 
   test "should get new" do
@@ -33,6 +35,9 @@ class ProductsControllerTest < ActionController::TestCase
   test "should show product" do
     get :show, id: @product
     assert_response :success
+
+    assert_select 'a', :href => edit_product_path(@product)
+    assert_match /Price:(.+)\$9/m, response.body
   end
 
   test "should get edit" do

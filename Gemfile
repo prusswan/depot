@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.7'
+gem 'rails', '~> 3.2.7'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -24,6 +24,9 @@ gem 'jquery-rails'
 
 group :development do
   gem 'guard'
+  gem 'rb-fsevent', :require => false, :platforms => :ruby
+  gem 'rb-inotify', :require => false, :platforms => :ruby
+  gem 'wdm',        :require => false, :platforms => [:mswin, :mingw]
 end
 
 group :test do

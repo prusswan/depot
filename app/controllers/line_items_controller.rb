@@ -1,4 +1,6 @@
 class LineItemsController < ApplicationController
+  before_filter :reset_counter, :only => :create
+
   # GET /line_items
   # GET /line_items.json
   def index
@@ -83,4 +85,9 @@ class LineItemsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+    def reset_counter
+      session[:counter] = 0
+    end
 end

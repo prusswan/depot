@@ -4,6 +4,8 @@
 
 <h1>Your Pragmatic Catalog</h1>
 
+<%= pluralize(session[:counter],'view') if session[:counter] > 5 %>
+
 <% @products.each do |product| %>
   <div class="entry">
     <%= image_tag(product.image_url) %>

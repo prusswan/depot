@@ -1,0 +1,14 @@
+<% if line_item == @current_item %>
+  <% current_tag = 'current_item' %>
+<% else %>
+  <% current_tag = '' %>
+<% end %>
+
+<tr id="<%= current_tag %>" >
+  <td><%= line_item.quantity %>&times;</td>
+  <td><%= line_item.product.title %></td>
+  <td class="item_price"><%= number_to_currency(line_item.total_price) %></td>
+  <td>
+    <%= link_to 'X', line_item, method: :delete, title: 'Remove from cart' %>
+  </td>
+</tr>

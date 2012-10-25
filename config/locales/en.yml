@@ -3,3 +3,11 @@
 
 en:
   hello: "Hello world"
+
+  activerecord:
+    errors:
+      models:
+        product:
+          attributes:
+            price:
+              not_a_number: "must be a number"

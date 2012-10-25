@@ -30,6 +30,12 @@ class ProductTest < ActiveSupport::TestCase
     assert product.valid?
   end
 
+  test 'product price must be a number' do
+    product = Product.new(price: 'string')
+    assert product.invalid?
+    assert_equal "must be a number", product.errors[:price].join('; ')
+  end
+
   test 'product title must be at least ten characters long' do
     product = Product.new(title: "My Book")
     assert product.invalid?

@@ -3,6 +3,8 @@ require 'test_helper'
 class LineItemsControllerTest < ActionController::TestCase
   setup do
     @line_item = line_items(:one)
+    @line_item.cart = carts(:one)
+    @line_item.save
   end
 
   test "should get index" do
@@ -44,6 +46,6 @@ class LineItemsControllerTest < ActionController::TestCase
       delete :destroy, id: @line_item
     end
 
-    assert_redirected_to line_items_path
+    assert_redirected_to controller: 'carts', action: 'show'
   end
 end

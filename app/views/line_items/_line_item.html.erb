@@ -9,6 +9,7 @@
   <td><%= line_item.product.title %></td>
   <td class="item_price"><%= number_to_currency(line_item.total_price) %></td>
   <td>
-    <%= link_to 'X', line_item, method: :delete, title: 'Remove from cart' %>
+    <%= link_to 'V', decrement_line_item_path(line_item), method: :post, title: 'Remove one from cart', remote: true %>
+    <%= link_to 'X', line_item, method: :delete, title: 'Remove from cart', remote: true %>
   </td>
 </tr>

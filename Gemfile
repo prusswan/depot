@@ -31,6 +31,9 @@ end
 
 group :test do
   gem 'ruby-prof'
+  gem "simplecov"
+  gem "simplecov-rcov"
+  gem "ci_reporter"
 end
 
 group :tools do

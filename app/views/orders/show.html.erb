@@ -17,7 +17,7 @@
 
 <p>
   <b>Pay type:</b>
-  <%= @order.pay_type %>
+  <%= PayType.find(@order.pay_type_id).name %>
 </p>
 
 

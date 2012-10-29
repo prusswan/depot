@@ -57,4 +57,16 @@ class ProductsControllerTest < ActionController::TestCase
 
     assert_redirected_to products_path
   end
+
+  test "should get who_bought" do
+    get :who_bought, id: @product
+    assert_response :success
+  end
+
+  [:json, :xml, :atom].each do |format|
+    test "should get who_bought via #{format}" do
+      get :who_bought, id: @product, format: format
+      assert_response :success
+    end
+  end
 end

@@ -1,4 +1,6 @@
 class LineItemsController < ApplicationController
+  skip_before_filter :authorize, only: :create
+
   before_filter :reset_counter, :only => :create
 
   # GET /line_items

@@ -56,6 +56,9 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
   end
 
   test "updating ship_date in order" do
+    post_via_redirect login_url, name: users(:one).name, password: 'secret'
+    assert_response :success
+
     get edit_order_url(orders(:one))
     assert_response :success
     assert_template "edit"

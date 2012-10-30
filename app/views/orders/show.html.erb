@@ -20,6 +20,12 @@
   <%= PayType.find(@order.pay_type_id).name %>
 </p>
 
+<p>
+  <b>Ship date:</b>
+  <% if @order.ship_date %>
+    <%= @order.ship_date.to_date %>
+  <% end %>
+</p>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>

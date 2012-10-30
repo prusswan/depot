@@ -54,4 +54,29 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     assert_equal 'Sam Ruby <depot@example.com>', mail[:from].value
     assert_equal "Pragmatic Store Order Confirmation", mail.subject
   end
+
+  test "updating ship_date in order" do
+    get edit_order_url(orders(:one))
+    assert_response :success
+    assert_template "edit"
+
+    put_via_redirect order_url(orders(:one)), order: {
+      ship_date: Time.now
+    }
+    assert_response :success
+    assert_template "show"
+
+    mail = ActionMailer::Base.deliveries.last
+    assert_equal "Pragmatic Store Order Shipped", mail.subject
+  end
+
+  test "accessing non-existent order" do
+    assert_raise do
+      get '/orders/fake'
+
+      mail = ActionMailer::Base.deliveries.last
+      assert_equal "Pragmatic Store Order Shipped", mail.subject
+      assert_match /Attempt to access invalid cart/, mail.body
+    end
+  end
 end

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CartTest < ActiveSupport::TestCase
   setup do
-    @cart = carts(:one)
+    @cart = carts(:two)
   end
 
   test "multiple unique products can be added" do

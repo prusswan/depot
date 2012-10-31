@@ -67,6 +67,8 @@ class LineItemsControllerTest < ActionController::TestCase
   end
 
   test "should destroy line_item via ajax" do
+    basic_login_as :one
+
     assert_difference('LineItem.count', -1) do
       xhr :delete, :destroy, id: @line_item
     end
@@ -75,6 +77,8 @@ class LineItemsControllerTest < ActionController::TestCase
   end
 
   test "should decrement line_item via ajax" do
+    basic_login_as :one
+
     @line_item.quantity = 3
     @line_item.product = products(:ruby)
     @line_item.save

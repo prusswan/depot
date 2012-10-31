@@ -22,6 +22,16 @@ class ActiveSupport::TestCase
     session[:user_id] = users(user).id
   end
 
+  def basic_login_as(user)
+    request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic
+      .encode_credentials(users(user).name, 'secret')
+  end
+
+  def request_login_as(user)
+    post_via_redirect login_url, name: users(user).name, password: 'secret'
+    assert_response :success
+  end
+
   def logout
     session.delete :user_id
   end

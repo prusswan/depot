@@ -56,8 +56,7 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
   end
 
   test "updating ship_date in order" do
-    post_via_redirect login_url, name: users(:one).name, password: 'secret'
-    assert_response :success
+    request_login_as(:one)
 
     get edit_order_url(orders(:one))
     assert_response :success
@@ -71,6 +70,11 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
 
     mail = ActionMailer::Base.deliveries.last
     assert_equal "Pragmatic Store Order Shipped", mail.subject
+  end
+
+  test "updating ship_date without login" do
+    get edit_order_url(orders(:one))
+    assert_response :redirect
   end
 
   test "accessing non-existent order" do

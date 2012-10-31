@@ -21,6 +21,13 @@
         <%= f.text_field :name, size: 40 %>
       </div>
 
+      <% unless @user.new_record? %>
+        <div>
+          <%= f.label :old_password, 'Old Password' %>:
+          <%= f.password_field :old_password, size: 40 %>
+        </div>
+      <% end %>
+
       <div>
         <%= f.label :password, 'Password' %>:
         <%= f.password_field :password, size: 40 %>

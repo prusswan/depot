@@ -5,9 +5,17 @@ class ApplicationController < ActionController::Base
 
   protected
     def authorize
-      unless User.find_by_id(session[:user_id])
-        redirect_to login_url, notice: "Please log in"
+      case request.format
+      when Mime::HTML
+        signed_in = User.find_by_id(session[:user_id])
+      else
+        signed_in = authenticate_or_request_with_http_basic do |name, password|
+          user = User.find_by_name(name)
+          user && user.authenticate(password)
+        end
       end
+
+      redirect_to login_url, notice: "Please log in" unless signed_in
     end
 
   private

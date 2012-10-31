@@ -65,6 +65,8 @@ class ProductsControllerTest < ActionController::TestCase
 
   [:json, :xml, :atom].each do |format|
     test "should get who_bought via #{format}" do
+      basic_login_as :one
+
       get :who_bought, id: @product, format: format
       assert_response :success
     end

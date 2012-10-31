@@ -41,7 +41,7 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should update user" do
-    put :update, id: @user, user: @input_attributes
+    put :update, id: @user, user: @input_attributes.merge!(old_password: 'secret')
     assert_redirected_to users_path
   end
 
@@ -51,5 +51,15 @@ class UsersControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to users_path
+  end
+
+  test "should not destroy user without login" do
+    logout
+
+    assert_no_difference('User.count') do
+      delete :destroy, id: @user
+    end
+
+    assert_redirected_to login_url
   end
 end

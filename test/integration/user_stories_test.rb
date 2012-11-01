@@ -3,6 +3,10 @@ require 'test_helper'
 class UserStoriesTest < ActionDispatch::IntegrationTest
   fixtures :products
 
+  setup do
+    default_url_options[:locale] = 'en'
+  end
+
   # A user goes to the index page. They select a product, adding it to their
   # cart, and check out, filling in their details on the checkout form. When
   # they submit, an order is created containing their information, along with a

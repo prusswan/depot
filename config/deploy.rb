@@ -1,6 +1,7 @@
 require 'rvm/capistrano'
 require 'bundler/capistrano'
 require 'capistrano_colors'
+require 'capistrano-cook/mysql'
 
 set :application, "depot"
 set :repository,  "git://github.com/prusswan/depot.git"

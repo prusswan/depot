@@ -57,6 +57,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'capistrano'
 gem 'capistrano_colors'
 gem 'rvm-capistrano'
+gem 'capistrano-cook', :git => 'https://github.com/subsis/capistrano-cook.git', :require => false
 
 # To use debugger
 # gem 'debugger'

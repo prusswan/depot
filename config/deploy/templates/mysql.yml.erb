@@ -1,0 +1,23 @@
+<% require 'base64' %>
+
+<% cipher = %Q{
+o/GxNlMW5q8QD8RicjYGMlM+P+/MXMbg9wMgjiDnOAqtcOMly4rPsY/RF0jT\n
+KhAFCfwWFwCAUd/aQLqN/QpCjEDQdR+TOIn1fhWqHRUQPBIpFBfQFc+JBLIv\n
+U7E539ca629TPp7WOGBmbyx1GfTrojN32Op8Ru5VUL+i4yYt1/aI2XW8nFLk\n
+NjSfbYI2uryKrgQLIhaiE3z0L1+eXBW+Hh+pWSt37olxTtyAKKcWWjqgsIlD\n
+USx3+bIWay4b05Bmu8m6o0iEx4+CaMylZolDTba5JhpP0SHV7ukGKLbT3puI\n
+R+8KZqnBdudrzBxw2meo5HKLOWum1V+rsQ5PtXD7aw==\n
+} %>
+
+<% key = OpenSSL::PKey::RSA.new(File.read(File.join(ENV['HOME'], '.ssh', 'id_rsa'))) %>
+<% DB_PASSWORD = key.private_decrypt(Base64.decode64(cipher)) %>
+
+production:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: depot_production
+  pool: 5
+  username: username
+  password: <%= DB_PASSWORD %>
+  host: localhost

@@ -6,4 +6,4 @@ require File.expand_path('../config/application', __FILE__)
 
 Depot::Application.load_tasks
 
-require 'ci/reporter/rake/test_unit'
+require 'ci/reporter/rake/test_unit' if Rails.env.development? or Rails.env.test?

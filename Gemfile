@@ -40,6 +40,10 @@ group :tools do
   gem 'guard-test'
 end
 
+group :production do
+  gem 'mysql2'
+end
+
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -50,7 +54,9 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
+gem 'capistrano_colors'
+gem 'rvm-capistrano'
 
 # To use debugger
 # gem 'debugger'

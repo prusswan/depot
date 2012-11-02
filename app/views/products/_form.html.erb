@@ -12,8 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br />
+    <%= f.label :title %>
     <%= f.text_field :title %>
+
+    <%= f.label :locale %>
+    <%= f.collection_select :locale, I18n.available_locales, :to_s, :to_s %>
   </div>
   <div class="field">
     <%= f.label :description %><br />

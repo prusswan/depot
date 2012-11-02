@@ -2,7 +2,7 @@ es:
   number:
     currency:
       format:
-        unit:      "$US"
+        unit:      "€"
         precision: 2
         separator: ","
         delimiter: "."
@@ -56,6 +56,10 @@ es:
       address_html: "Direcci&oacute;n"
       email:        "E-mail"
       pay_type_id:  "Forma de pago"
+      pay_type:
+        Check:          "Cheque"
+        Credit card:    "Tarjeta de crédito"
+        Purchase order: "Orden de compra"
       pay_prompt_html: "Seleccione un m&eacute;todo de pago"
       submit:       "Realizar Pedido"
 

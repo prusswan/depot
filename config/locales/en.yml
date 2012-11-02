@@ -55,6 +55,10 @@ en:
       address_html: "Address"
       email:        "E-mail"
       pay_type_id:  "Pay with"
+      pay_type:
+        Check:          "Check"
+        Credit card:    "Credit card"
+        Purchase order: "Purchase order"
       pay_prompt_html: "Select a payment method"
       submit:       "Place Order"
 

@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 require 'test_helper'
 
 class ProductsControllerTest < ActionController::TestCase
@@ -19,6 +21,16 @@ class ProductsControllerTest < ActionController::TestCase
     assert_select '.list_image', 3
   end
 
+  test "should get index in Spanish" do
+    get :index, locale: 'es'
+    assert_response :success
+    assert_not_nil assigns(:products)
+
+    assert_select '.list_image', 1
+
+    I18n.locale = 'en'
+  end
+
   test "should get new" do
     get :new
     assert_response :success
@@ -38,6 +50,16 @@ class ProductsControllerTest < ActionController::TestCase
 
     assert_select 'a', :href => edit_product_path(@product)
     assert_match /Price:(.+)\$9/m, response.body
+  end
+
+  test "should show product in Spanish" do
+    get :show, id: @product, locale: 'es'
+    assert_response :success
+
+    assert_select 'a', :href => edit_product_path(@product)
+    assert_match /Price:(.+)€/m, response.body
+
+    I18n.locale = 'en'
   end
 
   test "should get edit" do

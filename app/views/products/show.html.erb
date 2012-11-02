@@ -3,6 +3,9 @@
 <p>
   <b>Title:</b>
   <%= @product.title %>
+
+  <b>Locale:</b>
+  <%= @product.locale %>
 </p>
 
 <p>
@@ -17,7 +20,7 @@
 
 <p>
   <b>Price:</b>
-  <%= number_to_currency @product.price %>
+  <%= price_in_locale(@product.price) %>
 </p>
 
 
